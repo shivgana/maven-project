@@ -6,5 +6,12 @@ Java Hello World web application created using maven-archetype-webapp
 ## Dependancies
 * git
 * maven
-* tomcat
+
+## CI with Jenkins
+Build maven project with Jenkins
+ - Compile
+ - Code Review
+ - Unit Test
+ - Package
+ - Deploy
 

@@ -8,6 +8,22 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>mvn-hello-world Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>https://edudevops.jfrog.io/artifactory/libs-release</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>https://edudevops.jfrog.io/artifactory/libs-snapshot</url>
+        </repository>
+      </repositories>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -56,4 +72,37 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profile>
+        <id>metrics</id>
+        <build>
+            <plugins>
+			    <!-- PWD -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.2</version>
+                    <configuration>
+                        <targetJdk>1.8</targetJdk>
+                        <aggregate>true</aggregate>
+                        <format>xml</format>
+                        <!-- CPD options -->
+                        <minimumTokens>20</minimumTokens>
+                        <!--<ignoreIdentifiers>true</ignoreIdentifiers>-->
+                        <failOnViolation>true</failOnViolation>
+                        <failurePriority>2</failurePriority>
+                    </configuration>
+                </plugin>
+
+                <!-- FINDBUGS -->
+                <plugin>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>2.4.0</version>
+                    <configuration>
+                        <effort>Max</effort>
+                        <xmlOutput>true</xmlOutput>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
 </project>
