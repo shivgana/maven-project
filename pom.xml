@@ -93,6 +93,12 @@
                                 		<format>xml</format>
                             		</formats>
                         	</configuration>
+				<exclusions>
+            				<exclusion>
+                				<artifactId>tools</artifactId>
+                				<groupId>com.sun</groupId>
+            				</exclusion>
+        			</exclusions>
                     	</plugin>
 		</plugins>
 	</build>
